@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 
-import Discription from '../Discription/Discription.jsx';
+import Discription from '../Description/Discription.jsx';
 import Options from '../Options/Options.jsx';
 import Feedback from '../Feedback/Feedback.jsx';
 import './App.css';
+import Notification from '../Notification/Notification.jsx';
 
 export default function App() {
   const [feedback, setFeedback] = useState(() => {
@@ -44,9 +45,13 @@ export default function App() {
         onResetFeedback={resetFeedback}
       />
       {totalFeedback > 0 ? (
-        <Feedback feedback={feedback} positivePercentage={positivePercentage} />
+        <Feedback
+          feedback={feedback}
+          positivePercentage={positivePercentage}
+          totalFeedback={totalFeedback}
+        />
       ) : (
-        <p>No feedback yet.</p>
+        <Notification />
       )}
     </>
   );
